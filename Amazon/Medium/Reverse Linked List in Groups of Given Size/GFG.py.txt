@@ -1,0 +1,50 @@
+'''Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.'''
+
+
+"""Return reference of new head of the reverse linked list
+  The input list will have at least one element
+  Node is defined as
+class Node:
+    def __init__(self, data):
+		self.data = data
+		self.next = None
+  This is method only submission.
+  You only need to complete the method.
+"""
+def reverse(head, k):
+    last = None
+    prevlast = None;
+    current = head;
+    prev = None;
+    temp = k;
+    nhead = None;
+    while(current is not None):
+        if(temp==0):
+            if(nhead is None):
+                nhead = prev;
+            if(prevlast is not None):
+                prevlast.next = prev;
+            prev = None;
+            temp = k;
+            
+        if(temp==k):
+            prevlast = last;
+            last = current;
+            
+        next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+        temp -= 1;
+    
+    if(prevlast is not None):    
+        prevlast.next = prev;
+        
+    if(nhead is None):
+        nhead = prev;
+    
+    return nhead;
+        
+        
